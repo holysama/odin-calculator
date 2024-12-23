@@ -50,25 +50,44 @@ body {
 
 .numbers-container {
     display: flex;
-    gap: 2%;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
     width: 70%;
     height: 98%;
+    padding: 0;
+    gap: 1%;
 }
 
-.one:nth-child(1),
-.two:nth-child(2),
-.three:nth-child(3),
-.four:nth-child(4),
+
+.nine:nth-child(1),
+.eight:nth-child(2),
+.seven:nth-child(3),
+.six:nth-child(4),
 .five:nth-child(5),
-.six:nth-child(6),
-.seven:nth-child(7),
-.eight:nth-child(8),
-.nine:nth-child(9) {
-    width: 32%;
-    height: 32%;
+.four:nth-child(6),
+.three:nth-child(7),
+.two:nth-child(8),
+.one:nth-child(9),
+.zero:nth-child(10) {
+    width: 31%;
+    height: 19%;
     border-radius: 10px;
 }
+
+.numbers-container .box {
+    width: 32%; 
+    height: 23%; 
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+}
+
+.zero {
+    width: 100% !important;
+ }
 
 .operators-container {
     display: flex;
