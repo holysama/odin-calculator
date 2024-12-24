@@ -11,47 +11,65 @@ let multiply = function (a, b) {
 }
 
 let divide = function(a, b) {
+    if(b === 0) {
+        return "Error: You cannot divide by 0";
+    }
     return a / b;
 }
 
-let operation = function(operator, a, b) {
-    return;
+let operation = function(operator, firstNum, secondNum) {
+    return operator(a, b)
 }
 
 let numbersContainer = document.querySelector(".numbers-container");
 let display = document.querySelector(".display");
 
-numbersContainer.addEventListener("click", (event) => {
+let firstNumArr = [];
 
-    switch(event.target.classList) {
+numbersContainer.addEventListener("click", (event) => {
+    
+    switch(event.target.id) {
         case "zero":
-            display.textContent = 0;
+            firstNumArr.push(0);
+            break;
 
         case "one":
-            display.textContent = 1;
+            firstNumArr.push(1);
+            break;
 
         case "two":
-            display.textContent = 2;
+            firstNumArr.push(2);
+            break;
 
         case "three":
-            display.textContent = 3;
+            firstNumArr.push(3);
+            break;
 
         case "four":
-            display.textContent = 4;
+            firstNumArr.push(4);
+            break;
 
         case "five":
-            display.textContent = 5;
+            firstNumArr.push(5);
+            break;
 
         case "six":
-            display.textContent = 6;
+            firstNumArr.push(6);
+            break;
 
         case "seven":
-            display.textContent = 7;
+            firstNumArr.push(7);
+            break;
 
         case "eight":
-            display.textContent = 8;
+            firstNumArr.push(8);
+            break;
 
         case "nine":
-            display.textContent = 9;    
+            firstNumArr.push(9);
+            break;    
     }
-})
+    let firstNumber = firstNumArr.join("")
+    display.textContent = firstNumber;
+});
+

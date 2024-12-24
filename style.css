@@ -31,6 +31,11 @@ body {
 }
 
 .display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 100px;
+    padding: 20px;
     width: 97%;
     height: 20%;
     margin-top: 7px;
@@ -85,7 +90,7 @@ body {
     text-align: center;
 }
 
-.zero {
+#zero {
     width: 100% !important;
  }
 
@@ -98,11 +103,11 @@ body {
     height: 98%;
 }
 
-.add:nth-child(1),
-.subtract:nth-child(2),
-.multiply:nth-child(3),
-.divide:nth-child(4),
-.equals:nth-child(5) {
+#add:nth-child(1),
+#subtract:nth-child(2),
+#multiply:nth-child(3),
+#divide:nth-child(4),
+#equals:nth-child(5) {
     width: 150px;
     flex-grow: 1;
     border-radius: 10px;
