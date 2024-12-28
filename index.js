@@ -1,3 +1,4 @@
+//operators functions
 let add = function(a, b) {
     return a + b;
 }
@@ -12,64 +13,126 @@ let multiply = function (a, b) {
 
 let divide = function(a, b) {
     if(b === 0) {
-        return "Error: You cannot divide by 0";
+        return null;
     }
     return a / b;
 }
 
-let operation = function(operator, firstNum, secondNum) {
-    return operator(a, b)
+let operate = function(operator, firstNumber, secondNumber) {
+    return operator(firstNumber, secondNumber)
+};
+
+//numberSelection function
+numberSelection = function(id) {
+    switch(id) {
+        case "zero": return 0;
+        case "one": return 1;
+        case "two": return 2;
+        case "three": return 3;
+        case "four": return 4;
+        case "five": return 5;
+        case "six": return 6;
+        case "seven": return 7;
+        case "eight": return 8;
+        case "nine": return 9;
+        default: return "";
+    }
+};
+
+//operatorSelection function
+operatorSelection = function(id) {
+    switch(id) {
+        case "add":
+            return add;
+        case "subtract":
+            return subtract;
+        case "multiply":
+            return multiply;
+        case "divide":
+            return divide;
+        default:
+            return null;
+    }
+
+};
+
+//CSS containers selectors
+let display = document.querySelector(".display");
+let numbersContainer = document.querySelector(".numbers-container");
+let operatorsContainer = document.querySelector(".operators-container");
+
+//display function
+displayNumbers = function(number) {
+    display.textContent = number;
 }
 
-let numbersContainer = document.querySelector(".numbers-container");
-let display = document.querySelector(".display");
-
-let firstNumArr = [];
+//firstNumber and secondNumber buttons
+let strFirstNumber = "";
+let strSecondNumber = "";
+let toggleFlag = true;
 
 numbersContainer.addEventListener("click", (event) => {
-    
-    switch(event.target.id) {
-        case "zero":
-            firstNumArr.push(0);
-            break;
-
-        case "one":
-            firstNumArr.push(1);
-            break;
-
-        case "two":
-            firstNumArr.push(2);
-            break;
-
-        case "three":
-            firstNumArr.push(3);
-            break;
-
-        case "four":
-            firstNumArr.push(4);
-            break;
-
-        case "five":
-            firstNumArr.push(5);
-            break;
-
-        case "six":
-            firstNumArr.push(6);
-            break;
-
-        case "seven":
-            firstNumArr.push(7);
-            break;
-
-        case "eight":
-            firstNumArr.push(8);
-            break;
-
-        case "nine":
-            firstNumArr.push(9);
-            break;    
-    }
-    let firstNumber = firstNumArr.join("")
-    display.textContent = firstNumber;
+   let getDigit = event.target.id;
+   if (toggleFlag) {
+        strFirstNumber += numberSelection(getDigit);
+        displayNumbers(strFirstNumber);
+   }
+   else {
+        strSecondNumber += numberSelection(getDigit);
+        displayNumbers(strSecondNumber);
+   }
 });
+
+//operators buttons / toggle switch to secondNumber
+let selectedOperator = null;
+operatorsContainer.addEventListener("click", (event) => {
+    let getOperator =  event.target.id;
+    selectedOperator =  operatorSelection(getOperator);
+
+    if (selectedOperator !== null && strFirstNumber !== "") {
+        toggleFlag = false;
+    }
+});
+
+//reset button
+let resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", () => {
+    strFirstNumber = ""; 
+    strSecondNumber = "";
+    display.textContent = ""; 
+    selectedOperator = null; 
+    toggleFlag = true;
+});
+
+//equals button
+let equalsButton = document.querySelector("#equals");
+
+equalsButton.addEventListener("click", () => {
+    let firstNumber = Number(strFirstNumber);
+    let secondNumber = strSecondNumber !== "" ? Number(strSecondNumber) : 0;
+    
+    if (selectedOperator === null) {
+        displayNumbers(firstNumber);
+        return;
+    }
+
+    let result = operate(selectedOperator, firstNumber, secondNumber);
+    
+    if (result === null) {
+        displayNumbers("Error, you cannot divide by 0");
+        strFirstNumber = ""; 
+        strSecondNumber = ""; 
+        selectedOperator = null; 
+        toggleFlag = true;
+    }
+    else {
+        result = Number(result.toFixed(10));
+        displayNumbers(result);
+        strFirstNumber = result.toString();
+        strSecondNumber  = "";
+        toggleFlag = false;
+    } 
+});
+
 
