@@ -35,6 +35,7 @@ numberSelection = function(id) {
         case "seven": return 7;
         case "eight": return 8;
         case "nine": return 9;
+        case "dot": return ".";
         default: return "";
     }
 };

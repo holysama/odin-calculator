@@ -74,7 +74,8 @@ body {
 .three:nth-child(7),
 .two:nth-child(8),
 .one:nth-child(9),
-.zero:nth-child(10) {
+.zero:nth-child(10)
+.dot:nth-child(11) {
     width: 31%;
     height: 19%;
     border-radius: 10px;
@@ -91,7 +92,7 @@ body {
 }
 
 #zero {
-    width: 100% !important;
+    width: 65.8% !important;
  }
 
 .operators-container {
