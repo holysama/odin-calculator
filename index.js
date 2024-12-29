@@ -75,10 +75,21 @@ let toggleFlag = true;
 numbersContainer.addEventListener("click", (event) => {
    let getDigit = event.target.id;
    if (toggleFlag) {
+        
+        if (event.target.id === "dot") {
+            if (strFirstNumber.includes(".")) {
+                return;
+            }
+        }
         strFirstNumber += numberSelection(getDigit);
         displayNumbers(strFirstNumber);
    }
    else {
+        if (event.target.id === "dot") {
+            if (strSecondNumber.includes(".")) {
+                return;
+            }
+        }
         strSecondNumber += numberSelection(getDigit);
         displayNumbers(strSecondNumber);
    }
@@ -135,5 +146,3 @@ equalsButton.addEventListener("click", () => {
         toggleFlag = false;
     } 
 });
-
-
